@@ -3,16 +3,18 @@
 
 class Vector {
     private:
-        double tuple[3];
+        double x;
+        double y;
+        double z;
     public:
         Vector(double x, double y, double z);
 
         Vector* addVectorToVector(Vector* v);
         Vector* subtractVectorFromVector(Vector* v);
 
-        double x();
-        double y();
-        double z();
+        double getX();
+        double getY();
+        double getZ();
 };
 
 #endif

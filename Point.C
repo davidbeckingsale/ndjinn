@@ -2,41 +2,43 @@
 
 #include <iostream>
 
-Point::Point(double x, double y, double z)
+Point::Point(double x, double y, double z):
+    x(x),
+    y(y),
+    z(z)
 {
-   tuple[0] = x; 
-   tuple[1] = y; 
-   tuple[2] = z; 
 }
 
-void Point::addVectorToPoint(Vector* v)
+Point* Point::addVectorToPoint(Vector* v)
 {
+    x += v->getX();
+    y += v->getY();
+    z += v->getZ();
 
-    tuple[0] += v->x();
-    tuple[1] += v->y();
-    tuple[2] += v->z();
-
+    return this;
 }
 
-void Point::subtractVectorFromPoint(Vector* v)
+Point* Point::subtractVectorFromPoint(Vector* v)
 {
-    tuple[0] -= v->x();
-    tuple[1] -= v->y();
-    tuple[2] -= v->z();
+    x -= v->getX();
+    y -= v->getY();
+    z -= v->getZ();
+
+    return this;
 }
 
 Vector* Point::subtractPointFromPoint(Point* p)
 {
-    return new Vector(x()-p->x(),
-            y()-p->y(),
-            z()-p->z());
+    return new Vector(x-p->getX(),
+            y-p->getY(),
+            z-p->getZ());
 }
 
 void Point::drawPoint()
 {
-    std::cout << "(" << x() << "," << y() << "," << z() << ")" << std::endl;
+    std::cout << "(" << x << "," << y << "," << z << ")" << std::endl;
 }
 
-double Point::x() { return tuple[0]; }
-double Point::y() { return tuple[1]; }
-double Point::z() { return tuple[2]; }
+double Point::getX() { return x; }
+double Point::getY() { return y; }
+double Point::getZ() { return z; }
