@@ -37,44 +37,36 @@ extern "C" void GLFWCALL keyCallback(int key, int action) {
 
 
     if (key == 'S' && action == GLFW_PRESS) {
-        Point* origin = new Point(0.0,0.0,0.0);
-
-        Vector* tmpVector;
+        Point origin(0.0,0.0,0.0);
 
         for(std::vector<int>::size_type i = 0; i != points.size(); i++) {
-            tmpVector = points[i]->subtractPointFromPoint(origin);
+            Vector v = points[i]->subtractPointFromPoint(origin);
             points[i]->setPointToPoint(origin);
-            points[i]= points[i]->addVectorToPoint(tmpVector->scale(2.0,2.0,1.0));
-
-            delete tmpVector;
+            v.scale(2.0,2.0,1.0);
+            points[i]->addVectorToPoint(v);
         }
     }
 
     if (key == 'A' && action == GLFW_PRESS) {
-        Point* origin = new Point(0.0,0.0,0.0);
-
-        Vector* tmpVector;
+        Point origin(0.0,0.0,0.0);
 
         for(std::vector<int>::size_type i = 0; i != points.size(); i++) {
-            tmpVector = points[i]->subtractPointFromPoint(origin);
+            Vector v = points[i]->subtractPointFromPoint(origin);
             points[i]->setPointToPoint(origin);
-            points[i] = points[i]->addVectorToPoint(tmpVector->scale(0.5,0.5,1.0));
+            v.scale(0.5,0.5,1.0);
+            points[i]->addVectorToPoint(v);
 
-            delete tmpVector;
         }
     }
 
     if (key == 'R' && action == GLFW_PRESS) {
-        Point* origin = new Point(0.0,0.0,0.0);
-
-        Vector* tmpVector;
+        Point origin(0.0,0.0,0.0);
 
         for(std::vector<int>::size_type i = 0; i != points.size(); i++) {
-            tmpVector = points[i]->subtractPointFromPoint(origin);
+            Vector v = points[i]->subtractPointFromPoint(origin);
             points[i]->setPointToPoint(origin);
-            points[i] = points[i]->addVectorToPoint(tmpVector->rotateXY(15));
-
-            delete tmpVector;
+            v.rotateXY(15);
+            points[i]->addVectorToPoint(v);
         }
     }
 }

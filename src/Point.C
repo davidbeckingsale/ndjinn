@@ -12,26 +12,30 @@ Point::Point(double x, double y, double z):
 {
 }
 
-Point* Point::addVectorToPoint(Vector* v)
+void Point::addVectorToPoint(Vector& v)
 {
-    return new Point(x + v->getX(), y + v->getY(), z + v->getZ());
+   x += v.getX();
+   y += v.getY();
+   z += v.getZ();
 }
 
-Point* Point::subtractVectorFromPoint(Vector* v)
+void Point::subtractVectorFromPoint(Vector& v)
 {
-    return new Point(x - v->getX(), y - v->getY(), z - v->getZ());
+    x -= v.getX();
+    y -= v.getY();
+    z -= v.getZ();
 }
 
-Vector* Point::subtractPointFromPoint(Point* p)
+Vector Point::subtractPointFromPoint(Point& p)
 {
-    return new Vector(x - p->getX(), y - p->getY(), z - p->getZ());
+    return Vector(x - p.getX(), y - p.getY(), z - p.getZ());
 }
 
-void Point::setPointToPoint(Point* p)
+void Point::setPointToPoint(Point& p)
 {
-    x = p->getX();
-    y = p->getY();
-    z = p->getZ();
+    x = p.getX();
+    y = p.getY();
+    z = p.getZ();
 }
 
 void Point::drawPoint()

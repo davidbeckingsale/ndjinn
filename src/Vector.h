@@ -9,14 +9,14 @@ class Vector {
     public:
         Vector(double x, double y, double z);
 
-        Vector* addVectorToVector(Vector* v);
-        Vector* subtractVectorFromVector(Vector* v);
+        void addVectorToVector(Vector& v);
+        void subtractVectorFromVector(Vector& v);
 
-        Vector* rotateXY(double degrees);
-        Vector* rotateYZ(double degrees);
-        Vector* rotateXZ(double degrees);
+        void rotateXY(double degrees);
+        void rotateYZ(double degrees);
+        void rotateXZ(double degrees);
 
-        Vector* scale(double s0, double s1, double s2);
+        void scale(double s0, double s1, double s2);
 
         double getX();
         double getY();

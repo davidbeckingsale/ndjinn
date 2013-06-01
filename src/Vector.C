@@ -11,62 +11,49 @@ Vector::Vector(double x, double y, double z):
 {
 }
 
-Vector* Vector::addVectorToVector(Vector* v)
+void Vector::addVectorToVector(Vector& v)
 {
-    return new Vector(x + v->getX(), y + v->getY(), z + v->getZ());
+    x += v.getX();
+    y += v.getY();
+    z += v.getZ();
 }
 
-Vector* Vector::subtractVectorFromVector(Vector* v)
+void Vector::subtractVectorFromVector(Vector& v)
 {
-    return new Vector(x - v->getX(), y - v->getY(), z - v->getZ());
+    x -= v.getX();
+    y -= v.getY();
+    z -= v.getZ();
 }
 
-Vector* Vector::rotateXY(double degrees)
+void Vector::rotateXY(double degrees)
 {
-    double rx, ry, rz;
     double r = degrees * PI/180.0;
 
-    rx = x*cos(r) - y*sin(r);
-    ry = x*sin(r) + y*cos(r);
-    rz = z;
-
-    return new Vector(rx,ry,rz);
-
+    x = x*cos(r) - y*sin(r);
+    y = x*sin(r) + y*cos(r);
 }
 
-Vector* Vector::rotateYZ(double degrees)
+void Vector::rotateYZ(double degrees)
 {
-    double rx, ry, rz;
     double r = degrees * PI/180.0;
 
-    rx = x;
-    ry = y*cos(r) - z*sin(r);
-    rz = y*sin(r) + z*cos(r);
-
-    return new Vector(rx,ry,rz);
+    y = y*cos(r) - z*sin(r);
+    z = y*sin(r) + z*cos(r);
 }
 
-Vector* Vector::rotateXZ(double degrees)
+void Vector::rotateXZ(double degrees)
 {
-    double rx, ry, rz;
     double r = degrees * PI/180.0;
 
-    rx = x*cos(r) + y*sin(r);
-    ry = y;
-    rz = -x*sin(r) + z*cos(r);
-
-    return new Vector(rx,ry,rz);
+    x = x*cos(r) + y*sin(r);
+    z = -x*sin(r) + z*cos(r);
 }
 
-Vector* Vector::scale(double s0, double s1, double s2)
+void Vector::scale(double s0, double s1, double s2)
 {
-    double sx, sy, sz;
-
-    sx = x*s0;
-    sy = y*s1;
-    sz = z*s2;
-
-    return new Vector(sx,sy,sz);
+    x = x*s0;
+    y = y*s1;
+    z = z*s2;
 }
 
 double Vector::getX() { return x; }

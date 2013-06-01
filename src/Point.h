@@ -11,11 +11,11 @@ class Point {
     public:
         Point(double x, double y, double z);
 
-        Point* addVectorToPoint(Vector* v);
-        Point* subtractVectorFromPoint(Vector* v);
-        Vector* subtractPointFromPoint(Point* p);
+        void addVectorToPoint(Vector& v);
+        void subtractVectorFromPoint(Vector& v);
+        Vector subtractPointFromPoint(Point& p);
 
-        void setPointToPoint(Point* p);
+        void setPointToPoint(Point& p);
 
         double getX();
         double getY();
