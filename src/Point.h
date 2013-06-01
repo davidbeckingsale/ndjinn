@@ -1,9 +1,10 @@
 #ifndef POINT_H_
 #define POINT_H_
 
+#include "Entity.h"
 #include "Vector.h"
 
-class Point {
+class Point : public Entity {
     private:
         double x;
         double y;
@@ -21,7 +22,7 @@ class Point {
         double getY();
         double getZ();
 
-        void drawPoint();
+        void draw();
 };
 
 #endif

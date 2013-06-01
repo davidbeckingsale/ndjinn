@@ -38,7 +38,7 @@ void Point::setPointToPoint(Point& p)
     z = p.getZ();
 }
 
-void Point::drawPoint()
+void Point::draw()
 {
     glBegin(GL_POINTS);
         glVertex3f(x,y,z);
