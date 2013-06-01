@@ -15,6 +15,8 @@ class Point {
         Point* subtractVectorFromPoint(Vector* v);
         Vector* subtractPointFromPoint(Point* p);
 
+        void setPointToPoint(Point* p);
+
         double getX();
         double getY();
         double getZ();

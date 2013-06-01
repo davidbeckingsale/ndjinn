@@ -9,11 +9,12 @@ OBJS := $(SRCS:$(SRCDIR)/%.C=$(BUILDDIR)/%.o)
 
 BINARY := $(PRODUCT)
 
-CXX := g++
+CXX := c++
 CXXFLAGS_DEBUG := -g
 CXXFLAGS_OPT := -O3 -fast -fno-alias
 
 LD := $(CXX)
+LDFLAGS := -lglfw -framework Cocoa -framework OpenGL -framework IOKit
 
 # select optimized or debug
 #CXXFLAGS := $(CXXFLAGS_OPT) $(CPPFLAGS)
