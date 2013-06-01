@@ -1,5 +1,5 @@
 BUILDDIR := build
-PRODUCT := ngine
+PRODUCT := ndjinn
 
 SRCDIR := src
 
