@@ -3,8 +3,8 @@ PRODUCT := ndjinn
 
 SRCDIR := src
 
-HDRS := $(wildcard $(SRCDIR)/*.h)
-SRCS := $(wildcard $(SRCDIR)/*.C)
+HDRS := $(wildcard $(SRCDIR)/*.h $(SRCDIR)/**/*.h)
+SRCS := $(wildcard $(SRCDIR)/*.C $(SRCDIR)/**/*.C)
 OBJS := $(SRCS:$(SRCDIR)/%.C=$(BUILDDIR)/%.o)
 
 BINARY := $(PRODUCT)

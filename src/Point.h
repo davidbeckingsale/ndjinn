@@ -2,7 +2,7 @@
 #define POINT_H_
 
 #include "Entity.h"
-#include "Vector.h"
+#include "math/Vector.h"
 
 class Point : public Entity {
     private:

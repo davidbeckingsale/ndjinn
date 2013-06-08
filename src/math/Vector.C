@@ -11,18 +11,14 @@ Vector::Vector(double x, double y, double z):
 {
 }
 
-void Vector::addVectorToVector(Vector& v)
+Vector Vector::operator+(const Vector& v)
 {
-    x += v.getX();
-    y += v.getY();
-    z += v.getZ();
+    return Vector(x + v.x, y + v.y, z + v.z);
 }
 
-void Vector::subtractVectorFromVector(Vector& v)
+Vector Vector::operator-(const Vector& v)
 {
-    x -= v.getX();
-    y -= v.getY();
-    z -= v.getZ();
+    return Vector(x - v.x, y - v.y, z - v.z);
 }
 
 void Vector::rotateXY(double degrees)

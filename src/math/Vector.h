@@ -9,8 +9,8 @@ class Vector {
     public:
         Vector(double x, double y, double z);
 
-        void addVectorToVector(Vector& v);
-        void subtractVectorFromVector(Vector& v);
+        Vector operator+(const Vector &v);
+        Vector operator-(const Vector &v);
 
         void rotateXY(double degrees);
         void rotateYZ(double degrees);
