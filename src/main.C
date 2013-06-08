@@ -1,5 +1,6 @@
 #include "Point.h"
-#include "Vector.h"
+#include "Circle.h"
+#include "math/Vector.h"
 #include "Camera.h"
 
 #include "GL/glfw.h"
@@ -16,39 +17,17 @@ static void error_callback(int error, const char* description)
     std::cerr << description << std::endl;
 }
 
-extern "C" void GLFWCALL keyCallback(int key, int action) {
-    if (key == 'S' && action == GLFW_PRESS) {
-        Point origin(0.0,0.0,0.0);
+extern "C" void GLFWCALL mouse_callback(int button, int action) {
+    int x, y;
 
-        for(std::vector<int>::size_type i = 0; i != points.size(); i++) {
-            Vector v = points[i]->subtractPointFromPoint(origin);
-            points[i]->setPointToPoint(origin);
-            v.scale(2.0,2.0,1.0);
-            points[i]->addVectorToPoint(v);
-        }
-    }
+    if (action == GLFW_PRESS) {
+        glfwGetMousePos(&x, &y);
 
-    if (key == 'A' && action == GLFW_PRESS) {
-        Point origin(0.0,0.0,0.0);
+        int r = rand() % 20 + 10;
+        std::cout << "Adding new Circle @ " << x << "," << y << " with radius: " << r << std::endl;
 
-        for(std::vector<int>::size_type i = 0; i != points.size(); i++) {
-            Vector v = points[i]->subtractPointFromPoint(origin);
-            points[i]->setPointToPoint(origin);
-            v.scale(0.5,0.5,1.0);
-            points[i]->addVectorToPoint(v);
-
-        }
-    }
-
-    if (key == 'R' && action == GLFW_PRESS) {
-        Point origin(0.0,0.0,0.0);
-
-        for(std::vector<int>::size_type i = 0; i != points.size(); i++) {
-            Vector v = points[i]->subtractPointFromPoint(origin);
-            points[i]->setPointToPoint(origin);
-            v.rotateXY(15);
-            points[i]->addVectorToPoint(v);
-        }
+        Circle* c = new Circle(x,y,r);
+        camera->addToWorld(c);
     }
 }
 
@@ -63,22 +42,13 @@ int main(int argc, char* argv[]) {
     if (!glfwOpenWindow(640, 480, 8, 8, 8, 0, 24, 0, GLFW_WINDOW))
         return -1;
 
-    glfwSetKeyCallback(keyCallback);
+    glfwSetMouseButtonCallback(mouse_callback);
 
     camera = new Camera();
     camera->setViewMin(0.0, 0.0, 0.0);
     camera->setViewMax(640.0, 480.0, 1.0);
 
-    for(int i = 0; i < 100; i++) {
-        Point* p = new Point( (double) (rand() % 641),
-                (double) (rand() % 481),
-                (double) (rand() % 2));
-
-        points.push_back(p);
-        camera->addToWorld(p);
-    }
-
-    glPointSize(5.0);
+    glPointSize(1.0);
 
     glViewport(0, 0, 640, 480);
 
